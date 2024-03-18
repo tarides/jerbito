@@ -139,6 +139,7 @@
 
    Définir `cr` avant `i_u_we`
 2. Modifier l'expression précédente de telle sorte à ce que `i_u_we` soit
+3. 
    définie par l'expression suivante:
    ```ocaml
    "I " ^ sr ^ ", you " ^ sr ^ ", we all " ^ sr
