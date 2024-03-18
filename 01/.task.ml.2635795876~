@@ -9,7 +9,7 @@ let char_succ c =
 let string_cons c s = String.make 1 c ^ s
 
 
-(* EX 03 *)
+
 let _ =int_of_float (sqrt (float_of_int (int_of_string "81")))
 
 let _ =
@@ -20,7 +20,6 @@ let _ =
 d
 
 
-(* EX 04 *)
 let _ = 
   let cr = "cream" in
   let i_u_we = 
@@ -29,17 +28,4 @@ let _ =
   i_u_we ^ " for ice " ^ cr
 
 
-(* Pour info  *)
 let f = let c = ref 0 in fun x -> c := !c +  x; !c
-
-(* Fonctions Récursives *)
-(* EX1 *)
-
-let rec char_range lo hi =
-  if lo > hi then
-    ""
-  else
-    let next_char = char_succ lo in
-    string_cons lo (char_range next_char hi)
-
-
