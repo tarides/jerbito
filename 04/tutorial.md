@@ -6,7 +6,7 @@ Définir la fonction `first : 'a * 'b -> 'a` et la fonction `second : 'a * 'b ->
 Ces fonctions existent d'ailleurs en OCaml (`fst` et `snd`).
 
 ## Question 2
-Définir la fonction `sum : int * string -> int * string -> int * string` qui somme les premiers composantes des paires et qui concatènent les secondes composantes.
+Définir la fonction `sum : int * string -> int * string -> int * string` qui somme les premiers composantes des paires et qui concatènent le secondes composantes.
 
 Par exemple,
 ```ocaml
