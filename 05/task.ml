@@ -30,11 +30,6 @@ let rev (q : 'a queue) : 'a queue =
 
 
 
-
-
-
-
-
 (********** Foncton D'ASSOCIATION : **********)
 
 (* On definit d'abord la fonction def *) 
@@ -101,12 +96,6 @@ let fold (f : 'b -> 'a -> 'b) (acc : 'b) ((front, back) : 'a queue) : 'b =
 
 
 
-
-
-
-
-
-
   (* Type pour les observables *)
   type 'a obs = 'a list;;
 
@@ -128,7 +117,21 @@ let fold (f : 'b -> 'a -> 'b) (acc : 'b) ((front, back) : 'a queue) : 'b =
   let obs_concat_map (f : 'a -> 'b obs) (obs : 'a obs) : 'b obs =
     obs_concat_list (List.map f obs);;
 
+    (* Observables *)
+    let obs1 = [1; 2; 3] (* Observable 1 *)
+    let obs2 = [4; 5; 6] (* Observable 2 *)
 
+    (* Concaténation de deux observables *)
+    let result_concat = obs_concat obs1 obs2 (* Résultat: [5; 6; 7] *)
+
+    (* Concaténation d'une liste d'observables *)
+    let obs_list = [[1; 2]; [3; 4]; [5; 6]] (* Liste d'observables *)
+    let result_concat_list = obs_concat_list obs_list (* Résultat: [1; 2; 3; 4; 5; 6] *)
+
+    (* Application d'une fonction à chaque élément d'un observable et concaténation des résultats *)
+    let double = fun x -> [x * 2] (* Fonction double *)
+    let obs3 = [1; 2; 3] (* Observable *)
+    let result_concat_map = obs_concat_map double obs3 (* Résultat: [2; 4; 6] *)
 
 
 
