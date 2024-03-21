@@ -1,9 +1,21 @@
+(*STRUCTURE DES DONNEES*)
+
+let numbers = [1; 2; 3; 4; 5]      (* Liste de nombres *)
+let names = ["Alice"; "Bob"; "Charlie"]  (* Liste de noms *)
+
+
+let lst = [1; 2; 3]    (* Création d'une liste *)
+(* La liste est une chaîne d'éléments liés : 1 -> 2 -> 3 -> [] *)
+
+let lst = [10; 20; 30] in
+let first_element = List.hd lst in  (* Accès au premier élément *)
+let second_element = List.hd (List.tl lst) in  (* Accès au deuxième élément *)
+
+
 let ajouter_element element liste =
 element :: liste
 let ma_liste = [1; 2; 3; 4]
 let nouvelle_liste = (5 :: ma_liste);;
-
-
 
 (* Création d'un tableau vide de taille 5 *)
 let mon_tableau = Array.make 5 0;;
@@ -24,16 +36,18 @@ done;
 Printf.printf "\n";;
 
 
+let liste1 = [1; 2; 3]
+let liste2 = [4; 5; 6]
+let concatened_list = liste1 @ liste2
 
-let mon_tableau = [|1; 2; 3; 4; 5|];; (* Définition d'un tableau *)
-
-mon_tableau.(0) <- 42;;  (* Remplacer le premier élément par 42 *)
-
-(* Afficher le tableau après modification *)
-Array.iter (fun x -> Printf.printf "%d " x) mon_tableau;;
+let liste1 = [1; 2; 3]
+let liste2 = [4; 5; 6]
+let concatened_list = List.append liste1 liste2
 
 
-
+type 'a list =
+ | []
+ | ( :: ) of 'a * 'a list
 
 let mon_tableau = [|1; 2; 3; 4; 5|];; (* Définition d'un tableau *)
 
@@ -133,9 +147,9 @@ let test3 = swap [] (* Doit renvoyer [] *)
 (* Affichage des résultats des tests *)
 let () =
   Printf.printf "Résultat du test 1 : [%s]\n" (String.concat "; " (List.map string_of_int test1));
-  
+
   Printf.printf "Résultat du test 2 : [%s]\n" (String.concat "; " (List.map string_of_int test2));
-  
+
   Printf.printf "Résultat du test 3 : [%s]\n" (String.concat "; " (List.map string_of_int test3));
 ;;
 
@@ -379,3 +393,4 @@ let incr_list lst =
 let test = incr_list [1; 2; 3; 4; 5];; 
 
 Printf.printf "Résultat du test : %d\n" test;;
+

@@ -1,6 +1,5 @@
 let apply_to_list (f : 'a -> 'b) (lst : 'a list) : 'b list =
 List.map f lst;;
-²
 
 let apply_with_index (f : int -> 'a -> 'b) (lst : 'a list) : 'b list =
 List.mapi f lst; 
