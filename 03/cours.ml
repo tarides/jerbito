@@ -179,3 +179,33 @@ let compare_carte c1 c2 =
   else int_of_force c1.force > int_of_force c2.force
 
 type carte_ou_joker = Joker | Carte_normale of carte
+
+
+
+
+
+
+
+let rec nbtrue (bs:bool list) : int =
+match bs with
+[] -> 0
+| true::bs -> 1+(nbtrue bs)
+| _::bs -> (nbtrue bs)
+(* recursif terminal *) let nbtrue_rt (bs:bool list) : int =
+let rec loop bs r =
+match bs with
+[] -> r
+| true::bs -> 1+(nbtrue bs)
+| _::bs -> (nbtrue bs) in
+(loop bs 0)
+(* fold_left *)
+let nbtrue_it (bs:bool list) : int =
+List.fold_left (fun r b -> if b then 1+r else r) 0 bs
+(* Q2 *)
+let rec sumb (xs:’a list) (ys:’a list) : bool list =
+match xs, ys with
+[], [] -> []
+| x::xs, y::ys -> (x<>y)::(sumb xs ys)
+| _ -> raise (Invalid_argument "sumb")
+(* Q3 *)
+let disth (xs:’a list) (ys:’a list) : int = (nbtrue (sumb xs ys))

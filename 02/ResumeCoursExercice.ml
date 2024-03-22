@@ -394,3 +394,78 @@ let test = incr_list [1; 2; 3; 4; 5];;
 
 Printf.printf "Résultat du test : %d\n" test;;
 
+
+
+
+
+(* Question 13 *)
+let decr_list lst =
+  let rec decr_iter acc = function
+    | [] -> acc
+    | h :: t -> decr_iter ((h - 1) :: acc) t
+  in
+  List.rev (decr_iter [] lst)
+
+(* Tests pour la fonction decr_list *)
+let test_decr_list = decr_list [5; 4; 3; 2; 1] (* Résultat attendu: [4; 3; 2; 1; 0] *)
+
+(* Question 14 *)
+let only_less n lst = List.filter (fun x -> x < n) lst
+
+(* Tests pour la fonction only_less *)
+let test_only_less = only_less 5 [1; 5; 3; 7; 2; 8] (* Résultat attendu: [1; 3; 2] *)
+
+(* Question 15 *)
+let rev lst =
+  let rec rev_iter acc = function
+    | [] -> acc
+    | h :: t -> rev_iter (h :: acc) t
+  in
+  rev_iter [] lst
+
+let append lst1 lst2 =
+  let rec append_iter acc = function
+    | [] -> acc
+    | h :: t -> append_iter (h :: acc) t
+  in
+  append_iter (rev lst1) lst2
+
+(* Tests pour les fonctions rev et append *)
+let test_rev = rev [1; 2; 3] (* Résultat attendu: [3; 2; 1] *)
+let test_append = append [1; 2; 3] [4; 5; 6] (* Résultat attendu: [1; 2; 3; 4; 5; 6] *)
+
+(* Question 16 *)
+let max lst =
+  match lst with
+  | [] -> failwith "Liste vide"
+  | hd :: tl -> List.fold_left max hd tl
+
+(* Tests pour la fonction max *)
+let test_max = max [3; 7; 2; 8; 5] (* Résultat attendu: 8 *)
+
+(* Question 17 *)
+let is_sorted lst =
+  let rec is_sorted_iter prev = function
+    | [] -> true
+    | hd :: tl -> if prev > hd then false else is_sorted_iter hd tl
+  in
+  match lst with
+  | [] -> true
+  | hd :: tl -> is_sorted_iter hd tl
+
+(* Tests pour la fonction is_sorted *)
+let test_is_sorted1 = is_sorted [1; 2; 3; 4; 5] (* Résultat attendu: true *)
+let test_is_sorted2 = is_sorted [1; 3; 2; 4; 5] (* Résultat attendu: false *)
+
+(* Question 18 *)
+let remove_dup lst =
+  let rec remove_dup_iter acc = function
+    | [] -> acc
+    | hd :: tl ->
+        if List.mem hd acc then remove_dup_iter acc tl
+        else remove_dup_iter (hd :: acc) tl
+  in
+  List.rev (remove_dup_iter [] lst)
+
+(* Tests pour la fonction remove_dup *)
+let test_remove_dup = remove_dup [1; 2; 3; 1; 4; 2; 5] (* Résultat attendu: [3; 1; 4; 2; 5] *)

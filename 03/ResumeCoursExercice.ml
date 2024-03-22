@@ -51,7 +51,7 @@ let est_un_weekend jour =
     | Victoire -> 1.0
     | Nul -> 0.5
     | Defaite -> 0.0
-    
+
 (* EXERCICE 3:  *)
 
 type fin_de_partie = Victoire | Nul | Defaite
@@ -83,7 +83,7 @@ let transition_etat = function
     (match etat_courant with Metro -> "Metro" | Boulot -> "Boulot" | Dodo -> "Dodo")
     (match etat_suivant with Metro -> "Metro" | Boulot -> "Boulot" | Dodo -> "Dodo");;
 
-    
+
 (* EXERCICE 4:  *)
 
   let action_suivante etat_courant =
@@ -177,17 +177,17 @@ let difference x y =
 
 let multiplication x y =
   match x, y with
-  
+
   | Entier a, Entier b -> Entier (a * b)
   | Entier a, Flottant b | Flottant b, Entier a -> Flottant (float_of_int a *. b)
   | Flottant a, Flottant b -> Flottant (a *. b);;
-  
+
 let division x y =
   match x, y with
   | Entier a, Entier b -> Entier (a / b)
   | Entier a, Flottant b | Flottant b, Entier a -> Flottant (float_of_int a /. b)
   | Flottant a, Flottant b -> Flottant (a /. b);;
-  
+
   (*   Types option et list*)
 
 let division x y =
@@ -216,4 +216,3 @@ else
 
 
 
-  
